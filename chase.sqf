@@ -1,0 +1,37 @@
+_Array = ChaseArray;
+_wp1 = _Array select random ((count _Array)-1);
+_array = _array - [_wp1];
+_3way = false;
+_wp2 = _Array select random ((count _Array)-1);
+IF (_wp1 distance _wp2 < MinChaseDistance) then {_array = _array - _wp2;_wp3 = _Array select random ((count _Array)-1);_3way = true;EnemyWP3 = _wp3};
+_type = EnemyTypes select random((Count EnemyTypes)-1);
+_group = Creategroup East;
+_type createunit [getpos _wp1,_group,"Crim = this;this addaction [""Arrest"",""arrest.sqf"",true,10]"];
+sleep 0.01;
+_man = Crim;
+0=[_man] execVM "opforloadout.sqf";
+_man setvariable ["arrested",false,true];
+_man setskill 1;
+_man setskill ["aimingAccuracy",0.3];_man setskill ["aimingshake",0.2];_man setskill ["aimingSpeed",0.8];
+_vehicle = Cartypes select (random((Count Cartypes)-1));
+player groupchat format["car is %1",_vehicle];
+_car = _vehicle createvehicle (getpos _wp1);
+EnemyDriver = _Man;
+EnemyWP1 = _wp1;
+EnemyWP2 = _wp2;
+sleep 0.1;
+_man assignasdriver _car;
+_man moveindriver _car;
+_man setbehaviour "AWARES";
+_group setcombatmode "BLUE";
+_wp = _group addwaypoint [getpos _wp2,0];
+[_group,0] setwaypointtype "MOVE";
+_group setspeedmode "FULL";
+if (_3way) then {_group addwaypoint [getpos _wp3,5,1];[_group,1] setwaypointtype "MOVE";[_group,2] setwaypointstatements ["true","this setvariable [""arrested"",true,true];FailChase = [EnemyDriver,EnemyWP3];Publicvariable ""FailChase"""];NewMission = ["Chase",EnemyWP1,EnemyWP2,EnemyWP3];Publicvariable "NewMission"
+} else {
+[_group,1] setwaypointstatements ["true","this setvariable [""arrested"",true,true];FailChase = [EnemyDriver,EnemyWP2];Publicvariable ""FailChase"""];NewMission = ["Chase",EnemyWP1,EnemyWP2];Publicvariable "NewMission";
+};
+while {vehicle _man == _car && alive _man && (count FailChase == 0)} do {sleep 1;};
+IF (alive _man && (count FailChase == 0)) then {sleep 1;player sidechat "ENGAGIGN";_man setbehaviour "COMBAT";_man disableAI "FSM";_group setcombatmode "RED";_man setunitpos "UP";SuspectOnFoot = true;publicvariable "SuspectOnFoot"};
+while {alive _man && !(_man getvariable "arrested") && (count FailChase == 0)} do {sleep 1;};
+MissionComplete = true;
