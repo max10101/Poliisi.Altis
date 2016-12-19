@@ -8,14 +8,14 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=813;
+		nextID=817;
 	};
 	class Camera
 	{
-		pos[]={17047.996,40.678314,12868.267};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={16743.406,72.473061,12844.861};
+		dir[]={0.80125946,-0.50055808,0.32791543};
+		up[]={0.46333098,0.86566496,0.1896185};
+		aside[]={0.37878224,-3.1525269e-007,-0.92554551};
 	};
 };
 binarizationWanted=0;
@@ -187,7 +187,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=167;
+		items=168;
 		class Item0
 		{
 			dataType="Object";
@@ -3133,15 +3133,15 @@ class Mission
 					class PositionInfo
 					{
 						position[]={17047.996,15.679754,12893.316};
-						angles[]={0.0013372133,0,6.2818484};
+						angles[]={0.0013439035,0,6.2818413};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 					};
-					id=808;
-					type="poliisi_police_man";
+					id=814;
+					type="poliisi_swat_man";
 				};
 			};
 			class Attributes
@@ -3159,8 +3159,8 @@ class Mission
 					class Item0
 					{
 						linkID=0;
-						item0=808;
-						item1=807;
+						item0=814;
+						item1=813;
 						class CustomData
 						{
 							role=1;
@@ -3171,22 +3171,6 @@ class Mission
 			id=806;
 		};
 		class Item164
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={17047.998,17.274775,12893.269};
-				angles[]={0.0013372133,0,6.2818484};
-			};
-			side="West";
-			flags=6;
-			class Attributes
-			{
-			};
-			id=807;
-			type="poliisi_police_car";
-		};
-		class Item165
 		{
 			dataType="Group";
 			side="East";
@@ -3250,7 +3234,7 @@ class Mission
 			id=809;
 			atlOffset=-0.00027179718;
 		};
-		class Item166
+		class Item165
 		{
 			dataType="Object";
 			class PositionInfo
@@ -3266,6 +3250,50 @@ class Mission
 			id=810;
 			type="poliisi_sportscar1";
 			atlOffset=-0.00027179718;
+		};
+		class Item166
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={17047.998,17.289774,12893.3};
+				angles[]={0.0013439035,0,6.2818413};
+			};
+			side="West";
+			flags=6;
+			class Attributes
+			{
+			};
+			id=813;
+			type="poliisi_swat_offroad";
+		};
+		class Item167
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={13597.166,15.555008,12198.589};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+					};
+					id=816;
+					type="O_Soldier_A_F";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=815;
 		};
 	};
 };

@@ -1,12 +1,12 @@
 Money = 1500;
 NewMoney = 0;
-IF (true) ExitWith {};
+
 
 Cartypes = ["poliisi_sportscar1","poliisi_sportscar2","poliisi_sportscar3","C_Offroad_01_F","C_SUV_01_F","C_Van_01_transport_F"];
-Enemytypes = ["C_man_p_fugitive_F","C_man_p_shorts_1_F","C_man_p_beggar_F","C_man_polo_4_F_afro","C_man_shorts_4_F_asia"];
+Enemytypes = ["C_man_p_fugitive_F","C_man_p_shorts_1_F","C_man_p_beggar_F","C_man_polo_4_F_afro","C_man_shorts_4_F_asia","poliisi_criminal_1","poliisi_criminal_2","poliisi_criminal_boss"];
 Missiontypes = ["Chase.sqf","chase.sqf","chase.sqf"];
 //Missiontypes = ["Chase.sqf","Robbery.sqf","Riot.sqf"];
-Chasearray = [City1,City2,City3];
+Chasearray = [City,City_1,City_2];
 FailChase = [];
 FailRiot = [];
 FailRobbery = [];
@@ -19,6 +19,30 @@ SuspectArrested = false;
 _i = 0;
 _pay = 0;
 Payday = 0;
+//call with [_pos,_unittype,_cartype] call CrimInit OR just [pos] call crimcarinit
+
+CrimCarInit = compile '
+params [["_pos",[]],["_unittype",selectRandom EnemyTypes],["_cartype",selectRandom Cartypes]];
+private ["_unittype","_cartype","_group","_car","_unit"];
+_group = creategroup East;
+_unit = _group createUnit [_unittype, _pos, ["this addaction [""Arrest"",""arrest.sqf"",true,10]"], 1, "NONE"];
+
+_unit setvariable ["arrested",false,true];
+_unit setskill 1;
+_unit setskill ["aimingAccuracy",0.3];_man setskill ["aimingshake",0.2];_man setskill ["aimingSpeed",0.8];
+_unit setbehaviour "CARELESS";
+_unit setcombatmode "BLUE";
+_unit addeventhandler ["GetOutMan",{(_this select 0) setbehaviour "COMBAT";(_this select 0) setcombatmode "RED"}];
+
+_car = _cartype createvehicle _pos;
+_unit assignasdriver _car;
+_unit moveindriver _car;
+_group addvehicle _car;
+_unit
+';
+
+IF (true) ExitWith {};
+
 while {true} do
 	{
 	sleep 1;
