@@ -19,8 +19,9 @@ SuspectArrested = false;
 _i = 0;
 _pay = 0;
 Payday = 0;
-//call with [_pos,_unittype,_cartype] call CrimInit OR just [pos] call crimcarinit
+Debug = false;
 
+//call with [_pos,_unittype,_cartype] call CrimInit OR just [pos] call crimcarinit
 CrimCarInit = compile '
 params [["_pos",[]],["_unittype",selectRandom EnemyTypes],["_cartype",selectRandom Cartypes]];
 private ["_unittype","_cartype","_group","_car","_unit"];
@@ -32,7 +33,7 @@ _unit setskill 1;
 _unit setskill ["aimingAccuracy",0.3];_man setskill ["aimingshake",0.2];_man setskill ["aimingSpeed",0.8];
 _unit setbehaviour "CARELESS";
 _unit setcombatmode "BLUE";
-_unit addeventhandler ["GetOutMan",{(_this select 0) setbehaviour "COMBAT";(_this select 0) setcombatmode "RED";(_this select 0) setunitpos "UP"}];
+_unit addeventhandler ["GetOutMan",{(_this select 0) setbehaviour "COMBAT";(_this select 0) setcombatmode "RED";(_this select 0) setunitposweak "UP"}];
 
 _car = _cartype createvehicle _pos;
 _unit assignasdriver _car;
@@ -42,8 +43,8 @@ _unit
 ';
 
 IF (true) ExitWith {};
-//mission status should be [TYPE , PERPS TO BE ARRESTED , STATUS ("Init","Ongoing","Completed","None")] 
-MissionStatus = ["None",[]]
+//mission status should be [TYPE , PERPS TO BE ARRESTED, WP/Positions , STATUS ("Init","Ongoing","Completed","None")] 
+MissionStatus = ["None",[],[],"None"];
 
 //MISSION STATES ARE NONE, INIT, ONGOING, COMPLETED
 
@@ -56,7 +57,16 @@ Sleep 5;
 		};
 	
 		Case "Ongoing" : {
-			private ["_ArrestArray"];
+			private ["_man","_i","_del"];
+			for [{_i=0},{_i<(count (MissionStatus select 1))},{_i=_i+1}] do {
+				_man = (MissionStatus select 1) select _i
+				IF (!Alive _man OR (_man getvariable "arrested")) then {_del = (MissionStatus select 1) deleteAt _i;IF (Debug) then {Systemchat format ["%1 removed from MissionStatus due to killed/arrested - %2",_del,MissionStatus select 1]};
+				
+			};
+			
+			IF (count (MissionStatus select 1) <= 0) then {
+				MissionStatus set [3,"Completed"];
+			};
 			
 		};	
 	
