@@ -32,7 +32,7 @@ _unit setskill 1;
 _unit setskill ["aimingAccuracy",0.3];_man setskill ["aimingshake",0.2];_man setskill ["aimingSpeed",0.8];
 _unit setbehaviour "CARELESS";
 _unit setcombatmode "BLUE";
-_unit addeventhandler ["GetOutMan",{(_this select 0) setbehaviour "COMBAT";(_this select 0) setcombatmode "RED"}];
+_unit addeventhandler ["GetOutMan",{(_this select 0) setbehaviour "COMBAT";(_this select 0) setcombatmode "RED";(_this select 0) setunitpos "UP"}];
 
 _car = _cartype createvehicle _pos;
 _unit assignasdriver _car;
