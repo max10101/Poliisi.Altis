@@ -5,17 +5,17 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1;
+	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=817;
+		nextID=860;
 	};
 	class Camera
 	{
-		pos[]={16743.406,72.473061,12844.861};
-		dir[]={0.80125946,-0.50055808,0.32791543};
-		up[]={0.46333098,0.86566496,0.1896185};
-		aside[]={0.37878224,-3.1525269e-007,-0.92554551};
+		pos[]={16607.781,30.49486,12758.93};
+		dir[]={0.71611756,-0.30226186,0.62933159};
+		up[]={0.22715488,0.95317018,0.19962549};
+		aside[]={0.66020906,-4.2066677e-007,-0.75125229};
 	};
 };
 binarizationWanted=0;
@@ -53,9 +53,9 @@ addons[]=
 	"A3_Structures_F_Heli_Items_Airport",
 	"cba_xeh",
 	"A3_Structures_F_Heli_Ind_Machines",
-	"poliisi_police_mod",
+	"PSI_police_mod",
 	"A3_Modules_F",
-	"A3_Characters_F_Exp_Civil"
+	"A3_Soft_F_Exp_Offroad_01"
 };
 class AddonsMetaData
 {
@@ -141,8 +141,8 @@ class AddonsMetaData
 		};
 		class Item11
 		{
-			className="poliisi_police_mod";
-			name="poliisi_police_mod";
+			className="PSI_police_mod";
+			name="PSI_police_mod";
 		};
 		class Item12
 		{
@@ -153,8 +153,8 @@ class AddonsMetaData
 		};
 		class Item13
 		{
-			className="A3_Characters_F_Exp";
-			name="Arma 3 Apex - Characters and Clothing";
+			className="A3_Soft_F_Exp";
+			name="Arma 3 Apex - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
@@ -187,7 +187,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=168;
+		items=189;
 		class Item0
 		{
 			dataType="Object";
@@ -2807,7 +2807,7 @@ class Mission
 						isPlayer=1;
 					};
 					id=777;
-					type="poliisi_police_man";
+					type="PSI_police_man";
 					atlOffset=0.00013828278;
 				};
 			};
@@ -2839,7 +2839,7 @@ class Mission
 						name="q1";
 					};
 					id=802;
-					type="poliisi_police_heavy";
+					type="PSI_police_heavy";
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2873,8 +2873,8 @@ class Mission
 		class Item147
 		{
 			dataType="Trigger";
-			position[]={16640.482,24.48214,12795.464};
-			angle=3.6857383;
+			position[]={16640.482,24.482,12795.464};
+			angle=3.685734;
 			class Attributes
 			{
 				sizeA=2;
@@ -2885,7 +2885,7 @@ class Mission
 			};
 			id=286;
 			type="EmptyDetectorArea10x10";
-			atlOffset=1.4846191;
+			atlOffset=1.4844799;
 		};
 		class Item148
 		{
@@ -3089,7 +3089,7 @@ class Mission
 						name="q1_1";
 					};
 					id=805;
-					type="poliisi_police_man";
+					type="PSI_police_man";
 					class CustomAttributes
 					{
 						class Attribute0
@@ -3122,152 +3122,22 @@ class Mission
 		};
 		class Item163
 		{
-			dataType="Group";
-			side="West";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={17047.996,15.679754,12893.316};
-						angles[]={0.0013439035,0,6.2818413};
-					};
-					side="West";
-					flags=6;
-					class Attributes
-					{
-					};
-					id=814;
-					type="poliisi_swat_man";
-				};
-			};
-			class Attributes
-			{
-			};
-			class CrewLinks
-			{
-				class LinkIDProvider
-				{
-					nextID=1;
-				};
-				class Links
-				{
-					items=1;
-					class Item0
-					{
-						linkID=0;
-						item0=814;
-						item1=813;
-						class CustomData
-						{
-							role=1;
-						};
-					};
-				};
-			};
-			id=806;
-		};
-		class Item164
-		{
-			dataType="Group";
-			side="East";
-			class Entities
-			{
-				items=2;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={17325.715,8.8973389,13575.759};
-						angles[]={0.041309625,3.6747842,6.276526};
-					};
-					side="East";
-					flags=6;
-					class Attributes
-					{
-					};
-					id=811;
-					type="C_man_1";
-				};
-				class Item1
-				{
-					dataType="Waypoint";
-					position[]={17100.834,15.9285,12950.182};
-					speed="FULL";
-					combat="CARELESS";
-					class Effects
-					{
-					};
-					showWP="NEVER";
-					id=812;
-					type="Move";
-				};
-			};
-			class Attributes
-			{
-			};
-			class CrewLinks
-			{
-				class LinkIDProvider
-				{
-					nextID=1;
-				};
-				class Links
-				{
-					items=1;
-					class Item0
-					{
-						linkID=0;
-						item0=811;
-						item1=810;
-						class CustomData
-						{
-							role=1;
-						};
-					};
-				};
-			};
-			id=809;
-			atlOffset=-0.00027179718;
-		};
-		class Item165
-		{
 			dataType="Object";
 			class PositionInfo
 			{
 				position[]={17325.719,10.345643,13575.742};
 				angles[]={0.041309625,3.6747842,6.276526};
 			};
-			side="East";
-			flags=6;
+			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
 			id=810;
-			type="poliisi_sportscar1";
+			type="PSI_sportscar1";
 			atlOffset=-0.00027179718;
 		};
-		class Item166
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={17047.998,17.289774,12893.3};
-				angles[]={0.0013439035,0,6.2818413};
-			};
-			side="West";
-			flags=6;
-			class Attributes
-			{
-			};
-			id=813;
-			type="poliisi_swat_offroad";
-		};
-		class Item167
+		class Item164
 		{
 			dataType="Group";
 			side="East";
@@ -3294,6 +3164,375 @@ class Mission
 			{
 			};
 			id=815;
+		};
+		class Item165
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16579.168,12.611503,12721.361};
+				angles[]={0,0.72094905,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=831;
+			type="B_GEN_Offroad_01_gen_F";
+		};
+		class Item166
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16580.457,12.596462,12800.732};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=834;
+			type="PSI_police_car";
+		};
+		class Item167
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16575.797,12.596462,12800.134};
+				angles[]={0,6.0269156,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=836;
+			type="PSI_police_car";
+		};
+		class Item168
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16571.559,12.596462,12798.584};
+				angles[]={0,5.7019897,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=837;
+			type="PSI_police_car";
+		};
+		class Item169
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16575.791,12.596462,12724.494};
+				angles[]={0,0.724895,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=838;
+			type="PSI_police_car";
+		};
+		class Item170
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16571.863,12.611503,12727.909};
+				angles[]={0,0.71245092,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=839;
+			type="PSI_police_offroad";
+		};
+		class Item171
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16567.684,12.611503,12731.667};
+				angles[]={0,0.75339603,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=840;
+			type="PSI_police_offroad";
+		};
+		class Item172
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16563.629,12.611503,12735.029};
+				angles[]={0,0.7723248,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=841;
+			type="PSI_swat_offroad";
+		};
+		class Item173
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16560.428,13.205946,12740.633};
+				angles[]={0,1.2149138,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=843;
+			type="PSI_swat_hunter";
+		};
+		class Item174
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16598.801,11.604706,12720.979};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=844;
+			type="PSI_police_helicopter";
+		};
+		class Item175
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16571.07,11.268,12731.364};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=845;
+			type="RoadCone_F";
+		};
+		class Item176
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16567.227,11.268,12735.09};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=846;
+			type="RoadCone_F";
+		};
+		class Item177
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16562.941,11.268,12738.904};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=847;
+			type="RoadCone_F";
+		};
+		class Item178
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16575.307,11.268,12727.706};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=848;
+			type="RoadCone_F";
+		};
+		class Item179
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16578.781,11.268,12724.43};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=849;
+			type="RoadCone_F";
+		};
+		class Item180
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16572.34,11.268,12801.469};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=850;
+			type="RoadCone_F";
+		};
+		class Item181
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16574.018,11.268,12797.449};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=851;
+			type="RoadCone_F";
+		};
+		class Item182
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16578.002,11.268,12802.883};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=852;
+			type="RoadCone_F";
+		};
+		class Item183
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16578.432,11.268,12798.324};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=853;
+			type="RoadCone_F";
+		};
+		class Item184
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16570.855,11.268,12795.816};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=854;
+			type="RoadCone_F";
+		};
+		class Item185
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16568.604,11.268,12799.586};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=855;
+			type="RoadCone_F";
+		};
+		class Item186
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16583.766,11.268,12802.978};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=856;
+			type="RoadCone_F";
+		};
+		class Item187
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16583.105,11.268,12798.232};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=857;
+			type="RoadCone_F";
+		};
+		class Item188
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16567.975,12.596462,12796.407};
+				angles[]={0,5.8843575,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=859;
+			type="PSI_police_car";
 		};
 	};
 };
