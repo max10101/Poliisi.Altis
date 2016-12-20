@@ -42,17 +42,32 @@ _unit
 ';
 
 IF (true) ExitWith {};
+//mission status should be [TYPE , PERPS TO BE ARRESTED , STATUS ("Init","Ongoing","Completed","None")] 
+MissionStatus = ["None",[]]
 
-while {true} do
-	{
-	sleep 1;
-	IF (Payday > 0) then {_pay = Payday; Payday = 0; 0=_pay execvm "pay.sqf"};
-	IF (SuspectArrested) then {[West,"HQ"] sidechat "SUSPECT HAS BEEN ARRESTED";SuspectArrested = false;};
-	IF (SuspectDead) then {[West,"HQ"] sidechat "SUSPECT HAS BEEN SUBDUED";SuspectDead = false;};
-	IF (SuspectOnFoot) then {[West,"HQ"] sidechat "SUSPECT IS ON FOOT";SuspectOnFoot = false;};
-	IF (Count FailChase > 0) then {sleep 0.1;_r = FailChase execvm "FailChase.sqf";FailChase = [];};
-	//IF (Count FailRiot > 0) then {_r = FailRiot execvm "FailRiot.sqf";FailRiot = [];};
-	//IF (Count FailRobbery > 0) then {_r = FailRobbery execvm "FailRobbery.sqf";FailRobbery = [];};
-	IF (Count NewMission > 0) then {_r = NewMission execvm "NewMission.sqf";NewMission = [];};
-	IF (IsServer && MissionComplete) then {Sleep 1;_mission = [] execvm (Missiontypes select random ((Count Missiontypes)-1));MissionComplete = false;};
+//MISSION STATES ARE NONE, INIT, ONGOING, COMPLETED
+
+while {true} do {
+Sleep 5;
+	Switch (MissionStatus select 3) do {
+		Case "Init" : {
+			MissionStatus set [3,"Ongoing"];
+			MissionStatus execVM "Briefing.sqf";
+		};
+	
+		Case "Ongoing" : {
+			private ["_ArrestArray"];
+			
+		};	
+	
+		Case "Completed" : {
+			MissionStatus execVM "Debriefing.sqf";
+		};
+	
+		Case "None" : {
+			MissionStatus execVM "NewMission.sqf";
+		};
+	
+		Default {sleep 1};
 	};
+};
