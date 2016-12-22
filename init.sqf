@@ -1,7 +1,7 @@
 Money = 1500;
 NewMoney = 0;
 sleep 1;
-
+// ADD ENIGMAS CIVILIAN OCCUPATION SYSTEM AND TRAFFIC SCRIPTS
 _del = objnull;
 Cartypes = ["PSI_sportscar1","PSI_sportscar2","PSI_sportscar3","C_Offroad_01_F","C_SUV_01_F","C_Van_01_transport_F"];
 Enemytypes = ["C_man_p_fugitive_F","C_man_p_shorts_1_F","C_man_p_beggar_F","C_man_polo_4_F_afro","C_man_shorts_4_F_asia","c_nikos","c_orestes"];
