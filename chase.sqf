@@ -8,14 +8,23 @@ _array = _array - [_wp1];
 _wp2 = SelectRandom _Array;
 _array = _array - [_wp2];
 _wp3 = SelectRandom _Array;
+_manarr = [];
+_wparr = [_wp1,_wp2];
+_type = "CHASE";
+_tmpPos = [];
 
-IF (_wp1 distance _wp2 < MinChaseDistance) then {_3way = true};
+IF (_wp1 distance2d _wp2 < MinChaseDistance) then {_3way = true;_wparr = _wparr + [_wp3]};
 _man = [getpos _wp1] call CrimCarInit;
 _group = group _man;
 _vehicle = vehicle _man;
+_manarr = _manarr + [_man];
 sleep 1;
-IF (([typeof _vehicle] in ["poliisi_sportscar1","poliisi_sportscar2","poliisi_sportscar3"]) && (Random 1 > 0.7)) then {_race = true;};
-IF (_race) then {_man2 = [getpos _wp1] call CrimCarInit};
+IF (([typeof _vehicle] in ["psi_sportscar1","psi_sportscar2","psi_sportscar3"]) && (Random 1 > 0)) then {_race = true;};
+_race = true;
+IF (_race) then {
+_tmpPos = (getpos _wp1) findemptyposition [10,100,typeof _vehicle];
+_man2 = [_tmpPos] call CrimCarInit;_group2 = group _man2;_type = "RACE";_manarr = _manarr + [_man2]
+};
 
 sleep 1;
 _wp = _group addwaypoint [getpos _wp2,0];
@@ -45,7 +54,15 @@ if (_3way) then {
   };
 };
 
-MissionStatus = ["CHASE",[_man],[_wp1,_wp2],"Init"]
-IF (_race) then {MissionStatus set [1,[_man,_man2]];MissionStatus set [0,"RACE"]};
-IF (_3way) then {MissionStatus set [2,[_wp1,_wp2,_wp3]]};
+
+MissionStatus = [_type,_manarr,_wparr,"Init"];
 Publicvariable "MissionStatus";
+titleCut ["", "BLACK OUT", 5];
+systemchat format ["%4 START %1 THROUGH %2 TO %3 (3way %5)",_wp1 call BIS_fnc_locationDescription,_wp2 call BIS_fnc_locationDescription,_wp3 call BIS_fnc_locationDescription,MissionStatus select 0,_3way];
+sleep 5;
+[_man,_manarr,_type,_wparr] execvm "Briefing.sqf";
+sleep 0.1;
+titleCut ["", "BLACK IN", 0.5];
+
+
+
