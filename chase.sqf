@@ -39,13 +39,9 @@ if (_3way) then {
     [_grou2p,1] setwaypointstatements ["true",""];
   };
 } else {
-  [_group,1] setwaypointstatements ["true","this setvariable [""arrested"",true,true];FailChase = [EnemyDriver,EnemyWP2];Publicvariable ""FailChase"""];
-  NewMission = ["Chase",EnemyWP1,EnemyWP2];
-  Publicvariable "NewMission";
+  [_group,1] setwaypointstatements ["true","this setvariable [""success"",true,true];"];
   IF (_race) then {
-     [_group2,1] setwaypointstatements ["true","this setvariable [""arrested"",true,true];FailChase = [EnemyDriver,EnemyWP2];Publicvariable ""FailChase"""];
-    NewMission = ["Chase",EnemyWP1,EnemyWP2];
-    Publicvariable "NewMission";
+     [_group2,1] setwaypointstatements ["true","this setvariable [""success"",true,true];"];
   };
 };
 

@@ -21,6 +21,8 @@ _i = 0;
 _pay = 0;
 Payday = 0;
 Debug = true;
+//mission status should be [TYPE , PERPS TO BE ARRESTED, WP/Positions , STATUS ("Init","Ongoing","Completed","None")] 
+MissionStatus = ["None",[],[],"None"];
 
 //call with [_pos,_unittype,_cartype] call CrimInit OR just [pos] call crimcarinit
 CrimCarInit = compile '
@@ -43,8 +45,16 @@ _group addvehicle _car;
 _unit
 ';
 
-//mission status should be [TYPE , PERPS TO BE ARRESTED, WP/Positions , STATUS ("Init","Ongoing","Completed","None")] 
-MissionStatus = ["None",[],[],"None"];
+CrimSucceeded = compile '
+
+';
+
+CrimStopped = compile '
+_tmp = (MissionStatus select 1) - [_man];
+MissionStatus set [1,_tmp];
+IF (Debug) then {Systemchat format ["%1 removed from MissionStatus due to killed/arrested - %2",_man,MissionStatus select 1]}
+';
+
 
 //MISSION STATES ARE NONE, INIT, ONGOING, COMPLETED
 
@@ -64,9 +74,8 @@ sleep 5;
 			private ["_man","_i"];
 			for [{_i=0},{_i<(count (MissionStatus select 1))},{_i=_i+1}] do {
 				_man = (MissionStatus select 1) select _i;
-				
-				IF ((!(alive _man)) || (_man getvariable ["arrested",false])) then {_tmp = (MissionStatus select 1) - [_man];MissionStatus set [1,_tmp];IF (Debug) then {Systemchat format ["%1 removed from MissionStatus due to killed/arrested - %2",_man,MissionStatus select 1]}};
-				
+				IF (_man getvariable ["success",false]) then {_man call CrimSucceeded};
+				IF ((!(alive _man)) || (_man getvariable ["arrested",false])) then {_man call CrimStopped};
 			};
 			
 			IF (count (MissionStatus select 1) <= 0) then {
