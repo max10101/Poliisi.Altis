@@ -8,7 +8,8 @@ Cartypes = ["PSI_sportscar1","PSI_sportscar2","PSI_sportscar3","C_Offroad_01_F",
 Enemytypes = ["C_man_p_fugitive_F","C_man_p_shorts_1_F","C_man_p_beggar_F","C_man_polo_4_F_afro","C_man_shorts_4_F_asia","c_nikos","c_orestes"];
 Missiontypes = ["Chase.sqf","chase.sqf","chase.sqf"];
 //Missiontypes = ["Chase.sqf","Robbery.sqf","Riot.sqf"];
-Chasearray = [City,City_1,City_2,City_3,City_4,City_5,City_6,City_7,City_8,City_9];
+Cityarray = [City,City_1,City_2,City_3,City_4,City_5,City_6,City_7,City_8,City_9];
+Chasearray = [Road,Road_1,Road_2,Road_3,Road_4,Road_5,Road_6,Road_7,Road_8,Road_9,Road_10,Road_11,Road_12];
 FailChase = [];
 FailRiot = [];
 FailRobbery = [];
@@ -37,14 +38,14 @@ PSI_PursuitSounds = ["psi_pursuit_1","psi_pursuit_2","psi_pursuit_3","psi_pursui
 PSI_RespondSounds = ["psi_respond_1","psi_respond_2","psi_respond_3","psi_respond_4","psi_respond_5","psi_respond_6"];
 PSI_SuspectDownSounds = ["psi_suspectdown_1","psi_suspectdown_2","psi_suspectdown_3","psi_suspectdown_4"];
 
-
+//FUTURE - USE NEARESTROADS TO SPAWN CARS
 //call with [_pos,_unittype,_cartype] call CrimInit OR just [pos] call crimcarinit
 CrimCarInit = compile '
 params [["_pos",[]],["_unittype",selectRandom EnemyTypes],["_cartype",selectRandom Cartypes]];
 private ["_unittype","_cartype","_group","_car","_unit"];
-_group = Spawngroup;
+_group = creategroup East;
 _unit = _group createUnit [_unittype, _pos, ["this addaction [""Arrest"",""arrest.sqf"",true,10]"], 1, "NONE"];
-[_unit] join Grpnull;
+
 _unit setvariable ["arrested",false,true];
 _unit setskill 1;
 _unit setskill ["aimingAccuracy",0.3];_unit setskill ["aimingshake",0.2];_unit setskill ["aimingSpeed",0.8];
