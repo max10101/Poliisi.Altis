@@ -2,7 +2,8 @@ Money = 1500;
 NewMoney = 0;
 //[] execvm "Engima\Civilians\init.sqf";
 //[] execvm "Engima\Traffic\init.sqf";
-
+FirstChase = true;
+[] execvm "radio.sqf";
 _del = objnull;
 Cartypes = ["PSI_sportscar1","PSI_sportscar2","PSI_sportscar3","C_Offroad_01_F","C_SUV_01_F","C_Van_01_transport_F"];
 Enemytypes = ["C_man_p_fugitive_F","C_man_p_shorts_1_F","C_man_p_beggar_F","C_man_polo_4_F_afro","C_man_shorts_4_F_asia","c_nikos","c_orestes"];
@@ -37,6 +38,8 @@ PSI_KilledSounds = ["psi_killed_1","psi_killed_2","psi_killed_3","psi_killed_4",
 PSI_PursuitSounds = ["psi_pursuit_1","psi_pursuit_2","psi_pursuit_3","psi_pursuit_4","psi_pursuit_5","psi_pursuit_6","psi_pursuit_7","psi_pursuit_8","psi_pursuit_9"];
 PSI_RespondSounds = ["psi_respond_1","psi_respond_2","psi_respond_3","psi_respond_4","psi_respond_5","psi_respond_6"];
 PSI_SuspectDownSounds = ["psi_suspectdown_1","psi_suspectdown_2","psi_suspectdown_3","psi_suspectdown_4"];
+PSI_AmbientSounds = ["psi_ambient_1","psi_ambient_2","psi_ambient_3"];
+
 
 //FUTURE - USE NEARESTROADS TO SPAWN CARS
 //call with [_pos,_unittype,_cartype] call CrimInit OR just [pos] call crimcarinit
@@ -74,7 +77,7 @@ sleep 1;
 
 
 //MISSION STATES ARE NONE, INIT, ONGOING, COMPLETED
-while {true} do {
+while {IsServer} do {
 
 sleep 5;
 

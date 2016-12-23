@@ -4,12 +4,14 @@ _race = false;
 _man2 = objnull;
 _group2 = objnull;
 _wp1 = SelectRandom _Array;
+IF (FirstChase) then {_wp1 = Road_10;FirstChase = false;};
 _array = _array - [_wp1];
 _wp2 = SelectRandom _Array;
 _array = _array - [_wp2];
 _wp3 = SelectRandom _Array;
 _manarr = [];
 _wparr = [_wp1,_wp2];
+
 _type = "CHASE";
 _tmpPos = [];
 
