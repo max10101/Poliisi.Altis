@@ -1,0 +1,61 @@
+
+respawn = 3;
+respawnDelay = 10;
+respawnOnStart = -1;
+disabledAI = 1;
+joinUnassigned = 0;
+enableDebugConsole = 2;
+
+
+class CfgRemoteExec
+{
+        class Commands
+        {
+                mode = 2;
+				jip = 1;
+
+        };
+        class Functions
+        {
+                mode = 2;
+				jip = 1;
+
+        };
+};
+
+class CfgSounds
+	{
+	sounds[] = {"Debrief","Chase"};
+    class Debrief
+    {
+        name="Debrief";
+        sound[]={"Music\introextra.ogg",3,1.0};
+        titles[]={};
+    };
+	    class Chase
+    {
+        name="Chase";
+        sound[]={"Music\70ssong.ogg",2.0,1.0};
+		titles[]={};
+    };
+
+};
+
+#include "HG_SWSS\UI\HG_ControlTypes.h"
+#include "HG_SWSS\UI\HG_GiveMoney.h"
+#include "HG_SWSS\UI\HG_ShopDialog.h"
+
+class RscTitles
+{
+    #include "HG_SWSS\UI\HG_HUD.h"
+};
+
+class CfgClient
+{
+    #include "HG_SWSS\Config\HG_Config.h"
+};
+
+class CfgFunctions 
+{
+	#include "HG_SWSS\Functions\HG_Functions.h"
+};

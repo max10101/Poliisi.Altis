@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project name="HG_SWSS">
+    <Package name="General">
+	    <Key ID="STR_HG_ITEM_BOUGHT">
+		    <Original>You have bought a %1 for %2%3</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_NOT_ENOUGH_MONEY">
+		    <Original>You don't have enough money, requires %1%3, you actually have %2%3</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_ERR_ON_LOAD_1">
+		    <Original>::ERROR:: Dialog Loading - Passed param type is not a STRING</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_ERR_ON_LOAD_2">
+		    <Original>::ERROR:: Dialog Loading - Passed param is an empty STRING</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_ACCESS_DENIED">
+		    <Original>Access denied</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_NOT_A_NUMBER">
+		    <Original>Value entered is not a number</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_NEGATIVE_OR_ZERO">
+		    <Original>Value can't be negative or equal to zero</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_TOO_MUCH">
+		    <Original>You can't give more than what you have</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_SENT_MONEY">
+		    <Original>You have sent %1%3 to %2</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_RECEIVED_MONEY">
+		    <Original>You have received %1%3 from %2</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_PAYCHECK_NOTF">
+		    <Original>You will receive your next paycheck in %1 minute(s)</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_TIME_TO_PAY">
+		    <Original>You have received a paycheck of %1%2, next in %1 minute(s)</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+	</Package>
+	<Package name="Dialogs">
+	    <Key ID="STR_HG_DLG_TOOLTIP">
+		    <Original>[HG] Simple Shop System v1.4</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_DLG_BUY_TOOLTIP">
+		    <Original>Buy selected item</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_DLG_CLOSE_TOOLTIP">
+		    <Original>Close current dialog</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_DLG_MC">
+		    <Original>You have %1%2</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_DLG_MC_TOOLTIP">
+		    <Original>Hint your current cash</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_DLG_PRICE_TAG">
+		    <Original>Price: %1%2</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+	</Package>
+	<Package name="Shops">
+	    <Key ID="STR_HG_SHOP_SCOPES">
+		    <Original>Scopes</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_SHOP_WEAPONS">
+		    <Original>Weapons</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_SHOP_MAGAZINES">
+		    <Original>Magazines</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+		<Key ID="STR_HG_SHOP_ITEMS">
+		    <Original>Items</Original>
+		    <French></French>
+			<German></German>
+			<Russian></Russian>
+			<Spanish></Spanish>
+			<Italian></Italian>
+		</Key>
+	</Package>
+</Project>

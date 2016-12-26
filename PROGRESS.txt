@@ -1,0 +1,28 @@
+TO ADD:
+Riots
+Robberies
+Drug Deals
+Toolkits
+possiblity of armed units in chase
+sounds - event specific radio sounds
+INTRO CHASE SONG?
+
+FINISH WORKING ON:
+
+Money system
+
+
+MP TEST:
+Briefing
+Debriefing
+Chase
+Revive/respawn
+
+
+BUGS:
+
+
+
+
+CONSIDER:
+Unflip car?
