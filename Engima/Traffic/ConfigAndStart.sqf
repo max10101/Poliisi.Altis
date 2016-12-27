@@ -12,8 +12,8 @@
 _parameters = [
 	["SIDE", civilian],
 	["VEHICLES", ["C_Offroad_01_F", "C_Offroad_01_repair_F", "C_Quadbike_01_F", "C_Hatchback_01_F", "C_Hatchback_01_sport_F", "C_SUV_01_F", "C_Van_01_transport_F", "C_Van_01_box_F", "C_Van_01_fuel_F"]],
-	["VEHICLES_COUNT", 20],
-	["MIN_SPAWN_DISTANCE", 700],
+	["VEHICLES_COUNT", 14],
+	["MIN_SPAWN_DISTANCE", 600],
 	["MAX_SPAWN_DISTANCE", 1400],
 	["MIN_SKILL", 0.3],
 	["MAX_SKILL", 0.8],

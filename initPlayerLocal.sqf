@@ -20,3 +20,5 @@ if((getNumber(missionConfigFile >> "CfgClient" >> "enableSave")) isEqualTo 1) th
 
 
 _player addAction["<img image='HG_SWSS\UI\money.paa' size='1.5'/><t color='#FF0000'>Give Money</t>",{HG_CURSOR_OBJECT = cursorObject; createDialog "HG_GiveMoney"},"",0,false,false,"",'(alive player) AND (IsPlayer CursorObject) AND (alive cursorObject) AND (player distance cursorObject < 2) AND !dialog'];
+
+//_player addAction["<t color='#FF0000'>Arrest</t>",{PSI_CURSOR_OBJECT = cursorObject; createDialog "HG_GiveMoney"},"",0,false,false,"",'(alive player) AND (cursorObject isKindOf "Man") AND (alive cursorObject) AND (player distance cursorObject < 2) AND (CursorObject in )'];

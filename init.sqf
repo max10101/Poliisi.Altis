@@ -14,7 +14,7 @@ _target = _x;
 _condition = [(vehicle _target), "VIEW"] checkVisibility [eyePos player, eyePos _target];
 _pos = [getposATL _target select 0,getposATL _target select 1,(getposATL _target select 2)+3];
 		if (_condition > 0.5 && (player distance _target) < 50) then {
-			drawIcon3D ["\a3\ui_f\data\map\markers\nato\o_inf.paa", EAST call BIS_fnc_sideColor, _pos, 1, 1, 0, "SUSPECT", 0];
+			drawIcon3D ["\a3\ui_f\data\map\markers\nato\o_inf.paa", EAST call BIS_fnc_sideColor, _pos, 0.7, 0.7, 0, "SUSPECT", 0];
 		};
 		} Foreach (MissionStatus select 1);
 	}];
@@ -23,7 +23,6 @@ _pos = [getposATL _target select 0,getposATL _target select 1,(getposATL _target
 // ALL VARIABLE INIT
 
 AmmoBox addAction["<img image='HG_SWSS\UI\gun.paa' size='1.5'/><t color='#FF0000'>Open Weapons Shop</t>",{_this call HG_fnc_dialogOnLoadItems},"HG_DefaultShop",0,false,false,"",'(alive player) && !dialog'];
-player addAction["<img image='HG_SWSS\UI\money.paa' size='1.5'/><t color='#FF0000'>Give Money</t>",{HG_CURSOR_OBJECT = cursorObject; createDialog "HG_GiveMoney"},"",0,false,false,"",'(alive player) AND (IsPlayer cursorObject) AND (alive cursorObject) AND (player distance cursorObject < 2) AND !dialog'];
 
 MissionDebrief = [0,0];
 //Cartypes = ["PSI_sportscar1","PSI_sportscar2","PSI_sportscar3","C_Offroad_01_F","C_SUV_01_F","C_Van_01_transport_F"];
@@ -75,6 +74,7 @@ params [["_pos",[]],["_unittype",selectRandom EnemyTypes],["_cartype",selectRand
 private ["_unittype","_cartype","_group","_car","_unit"];
 _group = creategroup East;
 _unit = _group createUnit [_unittype, _pos, [], 1, "NONE"];
+[_unit] join _group;
 [_unit,["Arrest","arrest.sqf",true,10]] remoteExec ["AddAction",0];
 _unit setvariable ["arrested",false,true];
 _unit setskill 1;
@@ -91,6 +91,22 @@ _group addvehicle _car;
 _unit
 ';
 
+CrimRiotInit = compile '
+params [["_pos",[]],["_unittype",selectRandom EnemyTypes]];
+private ["_unittype","_cartype","_group","_car","_unit"];
+_group = creategroup East;
+_unit = _group createUnit [_unittype, _pos, [], 1, "NONE"];
+[_unit] join _group;
+[_unit,["<t color=""#FF0000"">Arrest</t>","arrest.sqf",[],10,true,true,"","CursorObject == _Target",2.5]] remoteExec ["AddAction",0];
+_unit setvariable ["arrested",false,true];
+_unit setskill 1;
+_unit setskill ["aimingAccuracy",0.1];_unit setskill ["aimingshake",0.1];_unit setskill ["aimingSpeed",0.8];
+_unit setbehaviour "CARELESS";
+_unit setcombatmode "RED";
+_unit setunitpos "UP";
+_unit
+';
+
 CrimSucceeded = compile '
 
 ';
@@ -102,6 +118,16 @@ MissionStatus set [1,_tmp];
 IF (!(alive _man)) then {MissionDebrief set [1,((MissionDebrief select 1) + 1)]};
 IF (_man getvariable ["arrested",false]) then {MissionDebrief set [0,((MissionDebrief select 0) + 1)]};
 IF (Debug) then {Systemchat format ["%1 removed from MissionStatus due to killed/arrested - %2",_man,MissionStatus select 1]}
+';
+
+ArrestFnc = CompileFinal '
+hint format ["%1",side (_this select 0)];
+(_this select 0) removeaction (_this select 2);
+IF (alive (_this select 0)) then {
+(_this select 0) setvariable ["arrested",true,true];
+removeallweapons (_this select 0);
+(_this select 0) playmoveNow "AmovPercMstpSsurWnonDnon";
+};
 ';
 
 //************************************************

@@ -1,22 +1,20 @@
 TO ADD:
-Riots
+
 Robberies
 Drug Deals
 Toolkits
 possiblity of armed units in chase
 sounds - event specific radio sounds
-INTRO CHASE SONG?
+intro chase song
+
+get paycheck
 
 FINISH WORKING ON:
-
+Riots
 Money system
 
 
 MP TEST:
-Briefing
-Debriefing
-Chase
-Revive/respawn
 
 
 BUGS:
@@ -25,4 +23,6 @@ BUGS:
 
 
 CONSIDER:
-Unflip car?
+Unflip car
+civilian questioning system
+drag suspect out of car action
