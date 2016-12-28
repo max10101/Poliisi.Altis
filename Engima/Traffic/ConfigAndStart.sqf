@@ -17,6 +17,7 @@ _parameters = [
 	["MAX_SPAWN_DISTANCE", 1400],
 	["MIN_SKILL", 0.3],
 	["MAX_SKILL", 0.8],
+	["ON_SPAWN_CALLBACK", {addToRemainsCollector [_this select 0]}],
 	["DEBUG", false]
 ];
 

@@ -25,7 +25,7 @@ class CfgRemoteExec
 
 class CfgSounds
 	{
-	sounds[] = {"Debrief","Chase"};
+	sounds[] = {"Debrief","Chase","kaching"};
     class Debrief
     {
         name="Debrief";
@@ -36,6 +36,12 @@ class CfgSounds
     {
         name="Chase";
         sound[]={"Music\70ssong.ogg",2.0,1.0};
+		titles[]={};
+    };
+		class kaching
+    {
+        name="kaching";
+        sound[]={"kaching.ogg",8.0,1.0};
 		titles[]={};
     };
 

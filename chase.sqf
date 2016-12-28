@@ -51,10 +51,9 @@ _wp setwaypointSpeed "FULL";
 
 MissionStatus = [_type,_manarr,_wparr,"Init"];
 Publicvariable "MissionStatus";
-//titleCut ["", "BLACK OUT", 4];
-[_man,_manarr,_type,_wparr] execvm "Briefing.sqf";
-sleep 0.1;
-//titleCut ["", "BLACK IN", 0.5];
+
+[[_man,_manarr,_type,_wparr],"Briefing.sqf"] RemoteExec ["ExecVM",0];
+
 sleep 5;
 _obj = ["Stop and arrest the suspect","Speeding vehicle",""];
 IF (_race) then {_obj = ["Stop and arrest the suspects","Racing vehicles",""]};

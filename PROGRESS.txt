@@ -6,19 +6,15 @@ Toolkits
 possiblity of armed units in chase
 sounds - event specific radio sounds
 intro chase song
-
-get paycheck
+visible cheque for paycheck
 
 FINISH WORKING ON:
-Riots
-Money system
-
 
 MP TEST:
-
+money system
 
 BUGS:
-
+AI kill eachother too much during riots
 
 
 

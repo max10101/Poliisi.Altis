@@ -1,8 +1,10 @@
 // EXECUTE SCRIPTS (ALL PLAYERS)
 
-//[] execvm "Engima\Civilians\init.sqf";
-//[] execvm "Engima\Traffic\init.sqf";
+[] execvm "Engima\Civilians\init.sqf";
+[] execvm "Engima\Traffic\init.sqf";
 IF (IsServer) then {[] execvm "radio.sqf"};
+
+Bossman addAction["<t color='#FF0000'>Collect Pay cheque</t>",{_this call PayDayFnc},"",100,true,true,"",'(alive player) && !dialog',10];
 
 //************************************************
 //EVENTHANLDER FOR MARKERS
@@ -23,7 +25,7 @@ _pos = [getposATL _target select 0,getposATL _target select 1,(getposATL _target
 // ALL VARIABLE INIT
 
 AmmoBox addAction["<img image='HG_SWSS\UI\gun.paa' size='1.5'/><t color='#FF0000'>Open Weapons Shop</t>",{_this call HG_fnc_dialogOnLoadItems},"HG_DefaultShop",0,false,false,"",'(alive player) && !dialog'];
-
+CleanUpArray = [];
 MissionDebrief = [0,0];
 //Cartypes = ["PSI_sportscar1","PSI_sportscar2","PSI_sportscar3","C_Offroad_01_F","C_SUV_01_F","C_Van_01_transport_F"];
 Cartypes = ["PSI_sportscar1","PSI_sportscar2","PSI_sportscar3"];
@@ -58,7 +60,7 @@ PSI_PursuitSounds = ["psi_pursuit_1","psi_pursuit_2","psi_pursuit_3","psi_pursui
 PSI_RespondSounds = ["psi_respond_1","psi_respond_2","psi_respond_3","psi_respond_4","psi_respond_5","psi_respond_6"];
 PSI_SuspectDownSounds = ["psi_suspectdown_1","psi_suspectdown_2","psi_suspectdown_3","psi_suspectdown_4"];
 PSI_AmbientSounds = ["psi_ambient_1","psi_ambient_2","psi_ambient_3"];
-
+_list = [];
 //mission status should be [TYPE , PERPS TO BE ARRESTED, WP/Positions , STATUS ("Init","Ongoing","Completed","None")] 
 MissionStatus = ["None",[],[],"None"];
 
@@ -66,6 +68,54 @@ psi_establishingShot = compile preprocessfile "psi_establishingshot.sqf";
 
 //************************************************
 //ALL CALL FUNCTIONS INIT
+
+PayDayFnc = compile '
+if (PayDay <= 0) then {hint "You have nothing to collect!\nDo some work!"} else {
+(_this select 1) setvariable ["HG_myCash",((_this select 1) getvariable "HG_myCash") + PayDay];
+Hint format ["You collect a cheque for $%1\nYou have $%2",PayDay,(_this select 1) getvariable "HG_myCash"];
+PayDay = 0;
+playsound "kaching";
+};
+';
+
+PaydayPayFnc = compile '
+Payday = Payday + (_this select 0);
+IF (Payday < 0) then {Payday = 0};
+';
+
+//this is GLOBAL killed EH
+CrimKilledEH = compile '
+private ["_man","_killer"];
+_man = _this select 0;
+_killer = _this select 2;
+hint format ["%1 %2",_man,name _killer];
+IF (_man getvariable ["armed",false]) then {
+		If (isPlayer _killer) then {
+		
+		//ARMED CIVILIAN KILLED BY PLAYER
+		
+			} else {
+			
+		//ARMED CIVILIAN KILLED BY ACCIDENT/CAR
+		
+			};
+	} else {
+	If (isPlayer _killer) then {
+	
+	//UNARMED CIVILIAN KILLED BY PLAYER
+	hint format ["An unarmed civilian has died.\nInternal Affairs has traced the bullets to %1s weapon.\n -$500",name _killer];
+	IF (IsServer) then {NewMoney = NewMoney - 500};
+	
+			} else {
+			
+	//UNARMED CIVILIAN KILLED BY CAR/ACCIDENT
+	IF (!(_man getvariable ["arrested",false])) then {
+		hint format ["An unarmed civilian has died in an accident.\nLocals blame police response.\n -$100",name _killer];
+		IF (IsServer) then {NewMoney = NewMoney - 100};
+	};
+			};
+	};
+';
 
 //FUTURE - USE NEARESTROADS TO SPAWN CARS
 //call with [_pos,_unittype,_cartype] call CrimInit OR just [pos] call crimcarinit
@@ -75,16 +125,17 @@ private ["_unittype","_cartype","_group","_car","_unit"];
 _group = creategroup East;
 _unit = _group createUnit [_unittype, _pos, [], 1, "NONE"];
 [_unit] join _group;
-[_unit,["Arrest","arrest.sqf",true,10]] remoteExec ["AddAction",0];
+[_unit,["<t color=""#FF0000"">Arrest</t>","arrest.sqf",[],10,true,true,"","CursorObject == _Target",3]] remoteExec ["AddAction",0];
 _unit setvariable ["arrested",false,true];
 _unit setskill 1;
 _unit setskill ["aimingAccuracy",0.3];_unit setskill ["aimingshake",0.2];_unit setskill ["aimingSpeed",0.8];
 _unit setbehaviour "CARELESS";
 _unit setcombatmode "BLUE";
 _unit addeventhandler ["GetOutMan",{(_this select 0) setbehaviour "COMBAT";(_this select 0) setcombatmode "RED";(_this select 0) setunitpos "UP"}];
-
-
+_unit addMPeventhandler ["MPKilled",{_this call CrimKilledEH}];
+_unit allowfleeing 0;
 _car = _cartype createvehicle _pos;
+addToRemainsCollector [_car,_unit];
 _unit assignasdriver _car;
 _unit moveindriver _car;
 _group addvehicle _car;
@@ -97,13 +148,16 @@ private ["_unittype","_cartype","_group","_car","_unit"];
 _group = creategroup East;
 _unit = _group createUnit [_unittype, _pos, [], 1, "NONE"];
 [_unit] join _group;
-[_unit,["<t color=""#FF0000"">Arrest</t>","arrest.sqf",[],10,true,true,"","CursorObject == _Target",2.5]] remoteExec ["AddAction",0];
+[_unit,["<t color=""#FF0000"">Arrest</t>","arrest.sqf",[],10,true,true,"","CursorObject == _Target",3]] remoteExec ["AddAction",0];
 _unit setvariable ["arrested",false,true];
 _unit setskill 1;
+_unit allowfleeing 0;
 _unit setskill ["aimingAccuracy",0.1];_unit setskill ["aimingshake",0.1];_unit setskill ["aimingSpeed",0.8];
 _unit setbehaviour "CARELESS";
 _unit setcombatmode "RED";
 _unit setunitpos "UP";
+addToRemainsCollector [_unit];
+_unit addMPeventhandler ["MPKilled",{_this call CrimKilledEH}];
 _unit
 ';
 
@@ -116,18 +170,28 @@ private ["_tmp"];
 _tmp = (MissionStatus select 1) - [_man];
 MissionStatus set [1,_tmp];
 IF (!(alive _man)) then {MissionDebrief set [1,((MissionDebrief select 1) + 1)]};
-IF (_man getvariable ["arrested",false]) then {MissionDebrief set [0,((MissionDebrief select 0) + 1)]};
+IF (_man getvariable ["arrested",false]) then {
+	MissionDebrief set [0,((MissionDebrief select 0) + 1)]
+};
+//PublicVariable "MissionStatus";
 IF (Debug) then {Systemchat format ["%1 removed from MissionStatus due to killed/arrested - %2",_man,MissionStatus select 1]}
 ';
 
 ArrestFnc = CompileFinal '
-hint format ["%1",side (_this select 0)];
 (_this select 0) removeaction (_this select 2);
 IF (alive (_this select 0)) then {
-(_this select 0) setvariable ["arrested",true,true];
-removeallweapons (_this select 0);
-(_this select 0) playmoveNow "AmovPercMstpSsurWnonDnon";
+	(_this select 0) setvariable ["arrested",true,true];
+	removeallweapons (_this select 0);
+	(_this select 0) playmoveNow "AmovPercMstpSsurWnonDnon";
 };
+
+IF ((_this select 0) getvariable ["armed",false]) then {
+	hint format ["Hero cop %1 arrests armed suspect\n$500",name (_this select 1)];
+	IF (IsServer) then {NewMoney = NewMoney + 500};
+} else {
+NewMoney = NewMoney + 200;
+};
+
 ';
 
 //************************************************
@@ -146,10 +210,13 @@ sleep 5;
 
 	Switch (MissionStatus select 3) do {
 		Case "Init" : {
-
+			MissionDebrief = [0,0];
 			MissionStatus set [3,"Ongoing"];
 			MissionStartTime = time;
-			//MissionStatus execVM "Briefing.sqf";
+			NewMoney = 1500;
+			IF ((MissionStatus select 0) in ["RACE"]) then {NewMoney = 2500};
+			IF ((MissionStatus select 0) in ["RIOT"]) then {NewMoney = 3000};
+			IF ((MissionStatus select 0) in ["CHASE"]) then {NewMoney = 1500};
 		};
 	
 		Case "Ongoing" : {
@@ -169,16 +236,31 @@ sleep 5;
 	
 		Case "Completed" : {
 
-		_args = [MissionStatus,time - MissionStartTime,MissionDebrief];
+		_args = [MissionStatus,time - MissionStartTime,MissionDebrief,NewMoney];
 		[_args,"debriefing.sqf"] remoteExec ["execVM",0];
 		{_x call BIS_fnc_DeleteTask} foreach CurrentTaskArray;CurrentTaskArray = [];
 		MissionStatus set [3,"None"];
+		
+		//addToRemainsCollector CleanupArray;
+		/*
+			_clean = CleanupArray spawn {
+			private ["_list"];
+			_list = _this;
+			sleep 60*3;
+			{deletevehicle _x} foreach _list;
+			};
+		*/
+		//	CleanupArray = [];
+			
+			
 		};
-	
+		
 		Case "None" : {
-
-			//MissionStatus execVM "NewMission.sqf";
+			[NewMoney] remoteExec ["PaydayPayFnc", 0];
+			NewMoney = 0;publicvariable "NewMoney";
 			MissionDebrief = [0,0];
+			[] execVM "NewMission.sqf";
+			MissionStatus set [3,"wait"];
 		};
 	
 		Default {sleep 1;};

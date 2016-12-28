@@ -182,7 +182,6 @@ class HG_WeaponsShopCfg // Has to be left untouched
 				{"PSI_swat_helmet",1000},
 				{"PSI_police_belt",200},
 				{"PSI_sniper_cap",100},
-				{"FirstAidKit",100}
 		    };
 		};
 		class Accessories
