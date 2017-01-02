@@ -35,7 +35,7 @@ class CfgSounds
 	    class Chase
     {
         name="Chase";
-        sound[]={"Music\70ssong.ogg",2.0,1.0};
+        sound[]={"Music\70ssong.ogg",1,1.0};
 		titles[]={};
     };
 		class kaching

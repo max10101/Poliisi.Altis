@@ -1,6 +1,7 @@
 if(isServer) then {
 
 	_unit = _this select 0;
+	_unit setvariable ["armed",true,true];
 	_unitClass = typeOf _unit;
 	//IF (player == _unit) exitwith {};
 

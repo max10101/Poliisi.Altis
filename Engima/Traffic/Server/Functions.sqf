@@ -132,6 +132,7 @@ ENGIMA_TRAFFIC_MoveVehicle = {
     };
     
     _waypoint = group _vehicle addWaypoint [_destinationPos, 10];
+	_vehicle limitspeed 50;
     _waypoint setWaypointBehaviour "SAFE";
     _waypoint setWaypointSpeed _speed;
     _waypoint setWaypointCompletionRadius 10;

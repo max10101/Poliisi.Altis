@@ -18,8 +18,12 @@ _text = format ["HQ: Suspect seen %2 headed in the direction of %3",_type,(_wayp
 IF (_type in ["RIOT"]) then {
 _text = format ["HQ: We've got reports of a riot in progress %1",_pos call BIS_fnc_locationDescription];
 };
+IF (_type in ["ROBBERY"]) then {
+_text = format ["HQ: Armed robbery in progress %1",_pos call BIS_fnc_locationDescription];
+};
 
 
+IF (IsServer) then {{_x setvariable ["AUDIO", false, true]} foreach AllCarArray};
 titleCut ["", "BLACK OUT", 4];
 sleep 4;
 _Targetarray = [];

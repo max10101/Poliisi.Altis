@@ -18,4 +18,6 @@ _str4 = format["Mission Time: %1",[_time,"MM:SS"] call BIS_fnc_secondsToString];
 		["","<br/>"],
 		[_str4,"align = 'center' shadow = '0' size = '0.7'","#df3030"]
 ]] spawn BIS_fnc_typeText2;
+IF (!IsNull MusicSound) then {deletevehicle MusicSound};
+sleep 0.5;
 playsound "Debrief";

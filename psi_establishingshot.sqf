@@ -148,6 +148,7 @@ if (_mode == 1) then {
 
 					activateKey '%1';
 					BIS_fnc_establishingShot_skip = true;
+					PSI_missionStarted = true;
 				};
 
 				if (_this select 1 != 1) then {true};

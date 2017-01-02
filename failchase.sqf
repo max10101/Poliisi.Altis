@@ -1,1 +1,0 @@
-player sidechat format ["CHASE FAILED %1",_this];

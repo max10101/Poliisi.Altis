@@ -21,20 +21,22 @@ class HG_HUD
 		class MoneyPicture: HG_RscPicture
 		{
 			text = "HG_SWSS\UI\money.paa";
-			x = 65 * GUI_GRID_W + GUI_GRID_X;
-			y = 32.5 * GUI_GRID_H + GUI_GRID_Y;
+			x = 55 * GUI_GRID_W + GUI_GRID_X;
+			y = 30.5 * GUI_GRID_H + GUI_GRID_Y;
 			w = 3 * GUI_GRID_W;
 			h = 2 * GUI_GRID_H;
+			colorText[] = {0,0,1,1};
 		};
 		
 		class MoneyText: HG_RscText
 		{
 			idc = HG_HUD_TEXT_IDC;
 			style = "0x01";
-			x = 52 * GUI_GRID_W + GUI_GRID_X;
-			y = 33 * GUI_GRID_H + GUI_GRID_Y;
+			x = 42 * GUI_GRID_W + GUI_GRID_X;
+			y = 31 * GUI_GRID_H + GUI_GRID_Y;
 			w = 13 * GUI_GRID_W;
 			h = 1 * GUI_GRID_H;
+			colorText[] = {0,0,1,1};
 		};
 	};
 };

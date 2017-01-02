@@ -1,24 +1,32 @@
 TO ADD:
 
-Robberies
+
+
 Drug Deals
-Toolkits
-possiblity of armed units in chase
-sounds - event specific radio sounds
-intro chase song
 visible cheque for paycheck
+AI drivers slow down/stop when nearby police car with siren on
+
+
 
 FINISH WORKING ON:
 
+
+
 MP TEST:
-money system
+civilian questioning system
+PULL UNITS OUT OF CAR test
+arrest sounds
+chase sounds
+riot sounds
+bullhorn sounds/unit out of vehicle text
+Stop siren sounds from playing during briefings
+spike strips
+Robberies
 
 BUGS:
 AI kill eachother too much during riots
 
 
-
 CONSIDER:
 Unflip car
-civilian questioning system
-drag suspect out of car action
+

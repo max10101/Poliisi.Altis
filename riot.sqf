@@ -1,6 +1,6 @@
 _array = Cityarray;
 _City = selectRandom _array;
-_maxcivs = 12;
+_maxcivs = 10 + (random 6);
 _i = 0;
 _dist = 5;
 _unitArray = [];
@@ -23,3 +23,7 @@ sleep 5;
 [West,["RIOT"],["Quell the riots","Arrest suspects"],(getpos _city),"ASSIGNED",3,true] call BIS_fnc_taskCreate;
 ["RIOT",true] call BIS_fnc_taskSetAlwaysVisible;
 CurrentTaskArray = ["RIOT"];
+sleep 2;
+(SelectRandom PSI_BackupSounds) remoteExec ["PSI_PlaySound",0];
+sleep 4;
+(SelectRandom PSI_104Sounds) remoteExec ["PSI_PlaySound",0];

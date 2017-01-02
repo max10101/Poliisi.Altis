@@ -43,7 +43,7 @@
 currencyType = "$";
 enableSave = false;
 resetSavedMoney = false;
-enableHUD = false;
+enableHUD = true;
 enablePaycheck = false;
 
 class HG_MoneyCfg
