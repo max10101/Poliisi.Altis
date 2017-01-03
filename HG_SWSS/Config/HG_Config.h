@@ -191,8 +191,8 @@ class HG_WeaponsShopCfg // Has to be left untouched
 		    {
 				{"FirstAidKit",100},
 				{"Toolkit",2000},
-				{"B_AssaultPack_blk",1000}
-				
+				{"B_AssaultPack_blk",1000},
+				{"PSI_SpikeStrip",500}
 		    };
 	    };
 	};

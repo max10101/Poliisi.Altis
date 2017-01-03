@@ -4,7 +4,7 @@
 */
 if(!hasInterface) exitWith {}; // If headless then exit
 params["_player"];
-sleep 0.1;
+sleep 2;
 _player enablefatigue false;
 _player addeventhandler ["Killed",{_this call PlayerKilledEH}];
 [_player] execvm "spikestrip.sqf";

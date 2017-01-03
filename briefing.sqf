@@ -23,7 +23,7 @@ _text = format ["HQ: Armed robbery in progress %1",_pos call BIS_fnc_locationDes
 };
 
 
-IF (IsServer) then {{_x setvariable ["AUDIO", false, true]} foreach AllCarArray};
+{IF (local _x) then {_x setvariable ["AUDIO", false, true]}} foreach AllCarArray;
 titleCut ["", "BLACK OUT", 4];
 sleep 4;
 _Targetarray = [];

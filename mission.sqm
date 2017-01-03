@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1008;
+		nextID=1009;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={20711.771,110.69156,15738.511};
-		dir[]={-0.45495579,-0.33957624,0.82323897};
-		up[]={-0.16425209,0.94057602,0.2972129};
-		aside[]={0.87524688,2.4435576e-007,0.48369509};
+		pos[]={16614.24,27.460545,12766.474};
+		dir[]={0.85523874,-0.51790148,-0.019064834};
+		up[]={0.51777792,0.85543603,-0.011542037};
+		aside[]={-0.022285433,-3.0311094e-007,-0.99976087};
 	};
 };
 binarizationWanted=0;
@@ -348,7 +348,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=230;
+		items=231;
 		class Item0
 		{
 			dataType="Object";
@@ -4108,7 +4108,7 @@ class Mission
 		class Item201
 		{
 			dataType="Trigger";
-			position[]={16793.023,22.039745,12727.969};
+			position[]={16784.543,22.682232,12727.782};
 			class Attributes
 			{
 				onActivation="_e = [] execvm ""chase.sqf"";_o = [] spawn {sleep 30;playsound ""CHASE"";MusicSound = ASLToAGL [0,0,0] nearestObject ""#soundonvehicle"";};";
@@ -4439,7 +4439,7 @@ class Mission
 		class Item222
 		{
 			dataType="Marker";
-			position[]={16831.574,3.4138209e+018,12715.386};
+			position[]={16982.283,3.4138209e+018,12837.854};
 			name="marker_12";
 			text="Pyrgos";
 			type="mil_dot";
@@ -4531,6 +4531,16 @@ class Mission
 			id=1007;
 			type="Logic";
 			atlOffset=0.001332283;
+		};
+		class Item230
+		{
+			dataType="Marker";
+			position[]={15476.076,-5.5627024e-005,16248.816};
+			name="marker_15";
+			text="Power Plant";
+			type="mil_dot";
+			id=1008;
+			atlOffset=-12.351779;
 		};
 	};
 };

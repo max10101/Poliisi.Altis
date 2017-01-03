@@ -1,4 +1,5 @@
 _vehicle = _this;
+sleep 0.01;
 ClearItemCargo _vehicle;
 clearweaponcargo _vehicle;
 clearmagazinecargo _vehicle;

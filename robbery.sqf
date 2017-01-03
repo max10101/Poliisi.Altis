@@ -69,5 +69,5 @@ _obj = ["Stop the robbery in progress","Robbery",""];
 CurrentTaskArray = ["ROBBERY","ROBBERYSub"];
 sleep 2;
 (SelectRandom PSI_CautionSounds) remoteExec ["PSI_PlaySound",0];
-sleep 4.5;
+sleep 5;
 (SelectRandom PSI_104Sounds) remoteExec ["PSI_PlaySound",0];

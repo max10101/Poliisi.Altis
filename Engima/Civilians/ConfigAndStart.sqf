@@ -17,10 +17,11 @@ _parameters = [
 	["MAX_SPAWN_DISTANCE", 500],
 	["BLACKLIST_MARKERS", []],
 	["HIDE_BLACKLIST_MARKERS", true],
-	["ON_UNIT_SPAWNED_CALLBACK", {(_this select 0) addaction [format["<t color='#FF9000'>Question</t>"], {_this execvm "question.sqf"}, [_unit], 10, true, true, "","((side player) == WEST)",5];}],
+	["ON_UNIT_SPAWNED_CALLBACK", {[_this select 0,"QuestionCiv.sqf"] remoteexec ["ExecVM",0]}],
 	["ON_UNIT_REMOVE_CALLBACK", { true }],
 	["DEBUG", false]
 ];
 
 // Start the script
 _parameters spawn ENGIMA_CIVILIANS_StartCivilians;
+

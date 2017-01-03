@@ -5,7 +5,7 @@ IF (Alive SpikeStrip) then {SpikeStrip setdamage 1};
 SpikeStripSet = false;
 SpikeStripDeployed = false;
 SpikeStrip = objnull;
-_this select 0 addAction["<t color='#FF0000'>Lay Spike Strip</t>","spikestrip.sqf","spikestrip",-1,false,true,"",'player == _target && vehicle player == player && (screenToWorld [0.5,0.5] distance player) < 5 && (screenToWorld [0.5,0.5] distance player) > 1.5 && !SpikeStripSet'];
+_this select 0 addAction["<t color='#FF0000'>Lay Spike Strip</t>","spikestrip.sqf","spikestrip",-1,false,true,"",'player == _target && vehicle player == player && (screenToWorld [0.5,0.5] distance player) < 5 && (screenToWorld [0.5,0.5] distance player) > 1.5 && !SpikeStripSet && ("PSI_SpikeStrip" in Magazines player)'];
 _this select 0 addAction["<t color='#FF0000'>Deploy Spike Strip</t>","spikestrip.sqf","deploy",-1,false,true,"",'player == _target && SpikeStripSet && !SpikeStripDeployed'];
 _this select 0 addAction["<t color='#FF0000'>Retract Spike Strip</t>","spikestrip.sqf","retract",-1,false,true,"",'player == _target && SpikeStripDeployed'];
 
@@ -30,6 +30,7 @@ SpikeStrip addAction["<t color='#FF0000'>Retrieve Spike Strip</t>","spikestrip.s
 IF (_type in ["deploy"]) then {
 _pos = getpos SpikeStrip;
 SpikeStrip setdamage 0;
+
 SpikeStrip setpos [_pos select 0,_pos select 1,-1];
 SpikeStrip setdamage 0;
 SpikeStripDeployed = true;
@@ -37,6 +38,7 @@ SpikeStripDeployed = true;
 
 IF (_type in ["retrieve"]) then {
 Deletevehicle _target;
+
 SpikeStripSet = false;
 SpikeStrip = objnull;
 SpikeStripDeployed = false
