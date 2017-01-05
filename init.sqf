@@ -26,6 +26,8 @@ _pos = [getposATL _target select 0,getposATL _target select 1,(getposATL _target
 
 AmmoBox addAction["<img image='HG_SWSS\UI\gun.paa' size='1.5'/><t color='#FF0000'>Open Weapons Shop</t>",{_this call HG_fnc_dialogOnLoadItems},"HG_DefaultShop",0,false,false,"",'(alive player) && !dialog'];
 AllCarArray = [];
+LastVoiceTime = 0;
+SoundDelayTime = 3;
 SpikeStripSet = false;
 MusicSound = objnull;
 CleanUpArray = [];
@@ -90,7 +92,10 @@ playsound "kaching";
 ';
 
 PSI_PlaySound = compile '
+IF (time >= (LastVoiceTime + SoundDelayTime)) then {
 playsound (_this);
+LastVoiceTime = time;
+};
 ';
 
 PaydayPayFnc = compile '
@@ -190,7 +195,7 @@ _unit setskill 1;
 _unit setskill ["aimingAccuracy",0.3];_unit setskill ["aimingshake",0.2];_unit setskill ["aimingSpeed",0.8];
 _unit setbehaviour "CARELESS";
 _unit setcombatmode "BLUE";
-_unit addeventhandler ["GetOutMan",{(_this select 0) setbehaviour "COMBAT";(_this select 0) setcombatmode "RED";(_this select 0) setunitpos "UP"}];
+_unit addeventhandler ["GetOutMan",{(_this select 0) setbehaviour "COMBAT";(_this select 0) setcombatmode "YELLOW";(_this select 0) setunitpos "UP"}];
 _unit addMPeventhandler ["MPKilled",{_this call CrimKilledEH}];
 _unit allowfleeing 0;
 CleanupArray = CleanupArray + [_unit];
@@ -255,10 +260,10 @@ _unit = _group createUnit [_unittype, _pos, [], 1, "NONE"];
 _unit setvariable ["arrested",false,true];
 _unit setskill 1;
 _unit allowfleeing 0;
-IF (random 1 > 0.7) then {[_unit] execvm "OpforLoadout.sqf"};
 _unit setskill ["aimingAccuracy",0.1];_unit setskill ["aimingshake",0.1];_unit setskill ["aimingSpeed",0.8];
 _unit setbehaviour "CARELESS";
-_unit setcombatmode "RED";
+IF (random 1 > 0.7) then {[_unit] execvm "OpforLoadout.sqf";_unit setbehaviour "AWARE"};
+_unit setcombatmode "YELLOW";
 _unit setunitpos "UP";
 CleanupArray = CleanupArray + [_unit];
 _unit addMPeventhandler ["MPKilled",{_this call CrimKilledEH}];

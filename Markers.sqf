@@ -6,7 +6,7 @@ IF (!HasInterface) Exitwith {};
      _westPlayerGroupUnits = [];
 
     while {true} do {
-    	sleep 1;
+    	sleep 0.5;
     	_markerID = 1;
     	_westPlayerGroupUnits = [];
 	    {
@@ -33,7 +33,10 @@ IF (!HasInterface) Exitwith {};
 		            if (isPlayer _unit) then {
 		            	_marker setMarkerTextLocal name _unit;
 		            	_marker setMarkerTypeLocal "flag_Canada";
-		            	_marker setMarkerColorLocal "Default"
+		            	//_marker setMarkerColorLocal "ColorRed"
+						if ((vehicle _unit) getvariable ["AUDIO",false]) then {
+							if (getmarkercolor _marker == "ColorRed" OR getmarkercolor _marker == "Default") then {_marker setmarkercolorlocal "ColorBlue"} else {_marker setmarkercolorlocal "ColorRed"};
+						} else {_marker setMarkerColorLocal "Default"};
 		            }
 		      		else {
 		      			_marker setMarkerTextLocal "";
