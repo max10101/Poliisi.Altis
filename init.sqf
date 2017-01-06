@@ -14,7 +14,7 @@ addMissionEventHandler ["Draw3D",{
 private ["_condition","_pos","_target"];
 _target = _x;
 _condition = [(vehicle _target), "VIEW"] checkVisibility [eyePos player, eyePos _target];
-_pos = [getposATL _target select 0,getposATL _target select 1,(getposATL _target select 2)+3];
+_pos = [getposATL _target select 0,getposATL _target select 1,(getposATL _target select 2)+3.5];
 		if (_condition > 0.5 && (player distance _target) < 75) then {
 			drawIcon3D ["\a3\ui_f\data\map\markers\nato\o_inf.paa", EAST call BIS_fnc_sideColor, _pos, 0.7, 0.7, 0, "SUSPECT", 0];
 		};
