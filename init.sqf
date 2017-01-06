@@ -28,6 +28,8 @@ AmmoBox addAction["<img image='HG_SWSS\UI\gun.paa' size='1.5'/><t color='#FF0000
 AllCarArray = [];
 LastVoiceTime = 0;
 SoundDelayTime = 3;
+//Overall rating is units arrested, units killed by police, units killed
+OverallRating = [];
 LastMission = "CHASE";
 SpikeStripSet = false;
 MusicSound = objnull;
