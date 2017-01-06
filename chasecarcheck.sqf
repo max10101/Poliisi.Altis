@@ -8,7 +8,8 @@ waituntil {
 if (!(Alive _driver) || (_driver getvariable ["Arrested",false])) exitwith {};
 IF ([_driver,AllPlayers,150] call DistCheck) then {
 [vehicle (([_driver,AllPlayers,150] call DistCheckUnit) select 1),[SelectRandom PSI_BullhornSounds,100,1]] remoteExec ["Say3D",0];
-} else {
+};
+sleep 10 + (random 20);
+if (!(Alive _driver) || (_driver getvariable ["Arrested",false])) exitwith {};
 _SITREP = [[toUpper format ["HQ: SUSPECT IS ON FOOT %1",(getpos _driver) call BIS_fnc_locationDescription],"align = 'center' size = '1.0'","#2A3DFF"]];
 [_SITREP,0.015 * safeZoneW + safeZoneX,0.015 * safeZoneH + safeZoneY,false] remoteExec ["BIS_fnc_typeText2",0];
-}
