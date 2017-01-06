@@ -28,6 +28,7 @@ AmmoBox addAction["<img image='HG_SWSS\UI\gun.paa' size='1.5'/><t color='#FF0000
 AllCarArray = [];
 LastVoiceTime = 0;
 SoundDelayTime = 3;
+LastMission = "CHASE";
 SpikeStripSet = false;
 MusicSound = objnull;
 CleanUpArray = [];
