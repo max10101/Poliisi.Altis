@@ -28,7 +28,7 @@ _man = _this select 0;
 _pos = _this select 1;
 While {Alive _man && !(_man getvariable ["Arrested",false])} do {
 sleep 1;
-_man domove [(getpos _pos select 0)+25-(random 50),(getpos _pos select 1)+25-(random 50),0];
+_man domove [(_pos select 0)+35-(random 70),(_pos select 1)+35-(random 70),0];
 sleep 10;
 IF (UnitReady _man OR (! Alive _man) OR (_man getvariable ["Arrested",false])) then {sleep 2+(random 6)} else {sleep 5+random 12};
 };
